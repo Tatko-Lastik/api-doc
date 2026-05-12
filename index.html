@@ -806,17 +806,23 @@
               <code>adresNo</code> sonraki sipariş isteklerinde kullanılabilir.
             </p>
 
+            <div class="info-box">
+              <strong>Not:</strong> <code>il</code> ve <code>ilce</code> alanları sırasıyla
+              <code>GET /locations/cities</code> ve <code>GET /locations/districts</code>
+              endpointlerinden alınan değerler gönderilmelidir.
+            </div>
+
             <div class="params-title">İstek Gövdesi</div>
             <table>
               <thead><tr><th>Alan</th><th>Tip</th><th>Zorunlu</th><th>Açıklama</th></tr></thead>
               <tbody>
-                <tr><td><span class="field-name">cadde</span></td><td><span class="field-type">string?</span></td><td><span class="field-opt">Opsiyonel</span></td><td>Cadde / açık adres bilgisi</td></tr>
-                <tr><td><span class="field-name">mahalle</span></td><td><span class="field-type">string?</span></td><td><span class="field-opt">Opsiyonel</span></td><td>Mahalle adı</td></tr>
+                <tr><td><span class="field-name">cadde</span></td><td><span class="field-type">string</span></td><td><span class="field-req">Zorunlu</span></td><td>Cadde / açık adres bilgisi</td></tr>
+                <tr><td><span class="field-name">mahalle</span></td><td><span class="field-type">string</span></td><td><span class="field-req">Zorunlu</span></td><td>Mahalle adı</td></tr>
                 <tr><td><span class="field-name">sokak</span></td><td><span class="field-type">string?</span></td><td><span class="field-opt">Opsiyonel</span></td><td>Sokak adı</td></tr>
                 <tr><td><span class="field-name">semt</span></td><td><span class="field-type">string?</span></td><td><span class="field-opt">Opsiyonel</span></td><td>Semt adı</td></tr>
-                <tr><td><span class="field-name">postaKodu</span></td><td><span class="field-type">string?</span></td><td><span class="field-opt">Opsiyonel</span></td><td>5 haneli posta kodu</td></tr>
-                <tr><td><span class="field-name">ilce</span></td><td><span class="field-type">string?</span></td><td><span class="field-opt">Opsiyonel</span></td><td>İlçe adı (<code>/locations/districts</code>'ten alınabilir)</td></tr>
-                <tr><td><span class="field-name">il</span></td><td><span class="field-type">string?</span></td><td><span class="field-opt">Opsiyonel</span></td><td>İl adı (<code>/locations/cities</code>'ten alınabilir)</td></tr>
+                <tr><td><span class="field-name">postaKodu</span></td><td><span class="field-type">string</span></td><td><span class="field-req">Zorunlu</span></td><td>5 haneli posta kodu</td></tr>
+                <tr><td><span class="field-name">ilce</span></td><td><span class="field-type">string</span></td><td><span class="field-req">Zorunlu</span></td><td><code>GET /locations/districts</code>'ten alınan <code>ilceAdi</code> değeri</td></tr>
+                <tr><td><span class="field-name">il</span></td><td><span class="field-type">string</span></td><td><span class="field-req">Zorunlu</span></td><td><code>GET /locations/cities</code>'ten alınan <code>ilAdi</code> değeri</td></tr>
                 <tr><td><span class="field-name">tel</span></td><td><span class="field-type">string?</span></td><td><span class="field-opt">Opsiyonel</span></td><td>Teslimat adresine ait telefon</td></tr>
                 <tr><td><span class="field-name">iletisimAdi</span></td><td><span class="field-type">string?</span></td><td><span class="field-opt">Opsiyonel</span></td><td>Teslimat adresindeki yetkili kişi adı</td></tr>
                 <tr><td><span class="field-name">email</span></td><td><span class="field-type">string?</span></td><td><span class="field-opt">Opsiyonel</span></td><td>E-posta adresi</td></tr>
@@ -900,7 +906,7 @@
                   <td><span class="field-name">ebat</span></td>
                   <td><span class="field-type">string</span></td>
                   <td><span class="field-opt">Opsiyonel</span></td>
-                  <td>Lastik ebatı filtresi — ör: <code>205/55R16</code></td>
+                  <td>Lastik ebatı filtresi — ör: <code>2055516</code> (205/55R16 → slash ve R kaldırılarak sayısal format)</td>
                 </tr>
               </tbody>
             </table>
@@ -911,7 +917,7 @@
 <span class="c-hdr">Authorization:</span> Bearer ...
 
 <span class="c-cmt">// Ebata göre filtrele</span>
-<span class="c-method">GET</span> <span class="c-url">{BASE_URL}/stock?ebat=205/55R16</span>
+<span class="c-method">GET</span> <span class="c-url">{BASE_URL}/stock?ebat=2055516</span>
 <span class="c-hdr">Authorization:</span> Bearer ...
 
 <span class="c-cmt">// Stok koduna göre filtrele</span>
@@ -933,8 +939,22 @@
       <span class="c-key">"kampanyaFiyat"</span>:     <span class="c-null">null</span>,
       <span class="c-key">"satisSartiIskonto"</span>: <span class="c-num">0.10</span>,   <span class="c-cmt">// %10 iskonto</span>
       <span class="c-key">"sepetteOzelIskonto"</span>:<span class="c-num">0.05</span>,   <span class="c-cmt">// %5 ek iskonto</span>
-      <span class="c-key">"miktar"</span>:             <span class="c-num">48</span>,
-      <span class="c-key">"depoStok"</span>:          <span class="c-str">"1_30,3_18"</span>  <span class="c-cmt">// depoNo_miktar formatında</span>
+      <span class="c-key">"miktar"</span>:              <span class="c-str">"+20"</span>,
+      <span class="c-key">"depoAdi"</span>:             <span class="c-str">"Esenyurt Depo"</span>
+    },
+    {
+      <span class="c-key">"stokKodu"</span>:            <span class="c-str">"BRI.001.20555R16"</span>,
+      <span class="c-key">"desen"</span>:               <span class="c-str">"TURANZA T005"</span>,
+      <span class="c-key">"markaIsmi"</span>:          <span class="c-str">"BRIDGESTONE"</span>,
+      <span class="c-key">"ebat"</span>:                <span class="c-str">"205/55R16"</span>,
+      <span class="c-key">"mevsim"</span>:              <span class="c-str">"YAZ"</span>,
+      <span class="c-key">"kdvDahilFiyat"</span>:      <span class="c-num">2450.00</span>,
+      <span class="c-key">"eskiFiyat"</span>:          <span class="c-num">2700.00</span>,
+      <span class="c-key">"kampanyaFiyat"</span>:      <span class="c-null">null</span>,
+      <span class="c-key">"satisSartiIskonto"</span>:  <span class="c-num">0.10</span>,
+      <span class="c-key">"sepetteOzelIskonto"</span>: <span class="c-num">0.05</span>,
+      <span class="c-key">"miktar"</span>:              <span class="c-str">"18"</span>,
+      <span class="c-key">"depoAdi"</span>:             <span class="c-str">"Ankara Depo"</span>
     }
   ]
 }</pre>
@@ -954,8 +974,8 @@
                 <tr><td><span class="field-name">satisSartiIskonto</span></td><td><span class="field-type">decimal?</span></td><td>Satış şartı iskonto oranı (0.10 = %10)</td></tr>
                 <tr><td><span class="field-name">sepetteOzelIskonto</span></td><td><span class="field-type">decimal?</span></td><td>Sepette uygulanan özel iskonto oranı</td></tr>
                 <tr><td><span class="field-name">markaBazliIskonto</span></td><td><span class="field-type">decimal?</span></td><td>Marka bazlı iskonto oranı</td></tr>
-                <tr><td><span class="field-name">miktar</span></td><td><span class="field-type">integer?</span></td><td>Toplam mevcut stok adedi</td></tr>
-                <tr><td><span class="field-name">depoStok</span></td><td><span class="field-type">string?</span></td><td>Depo bazlı stok: <code>depoNo_miktar,depoNo_miktar</code> formatında</td></tr>
+                <tr><td><span class="field-name">miktar</span></td><td><span class="field-type">string?</span></td><td>Toplam mevcut stok adedi</td></tr>
+                <tr><td><span class="field-name">depoAdi</span></td><td><span class="field-type">string?</span></td><td>Depo adı — her depo için ayrı bir satır döner</td></tr>
                 <tr><td><span class="field-name">dot</span></td><td><span class="field-type">string?</span></td><td>DOT / üretim tarihi</td></tr>
                 <tr><td><span class="field-name">desenResim</span></td><td><span class="field-type">string?</span></td><td>Desen görseli URL'i (varsa)</td></tr>
               </tbody>
@@ -1006,7 +1026,7 @@
                   <td><span class="field-name">warehouseNo</span></td>
                   <td><span class="field-type">integer</span></td>
                   <td><span class="field-req">Zorunlu</span></td>
-                  <td>ERP depo numarası (stok listesinde <code>depoStok</code> alanındaki depoNo)</td>
+                  <td>ERP depo numarası — stok listesindeki her satırda gelen depo bilgisine göre belirlenir</td>
                 </tr>
                 <tr>
                   <td><span class="field-name">paymentMethod</span></td>
