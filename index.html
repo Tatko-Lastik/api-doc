@@ -459,6 +459,11 @@
           
         </div>
         <div class="hero-meta-item">
+          <span class="label">UAT Base URL</span>
+          <span class="value">https://t-uat.tatko1927.com</span>
+        </div>
+
+        <div class="hero-meta-item">
           <span class="label">API Sürümü</span>
           <span class="value">v1.0</span>
         </div>
@@ -522,7 +527,7 @@
             </table>
 
             <div class="code-label">İstek Örneği</div>
-            <pre><span class="c-method">POST</span> <span class="c-url">{BASE_URL}/auth/token</span>
+            <pre><span class="c-method">POST</span> <span class="c-url">https://t-uat.tatko1927.com/auth/token</span>
 <span class="c-hdr">Content-Type:</span> application/json
 
 {
@@ -579,7 +584,7 @@
             </table>
 
             <div class="code-label">İstek Örneği</div>
-            <pre><span class="c-method">POST</span> <span class="c-url">{BASE_URL}/auth/refresh</span>
+            <pre><span class="c-method">POST</span> <span class="c-url">https://t-uat.tatko1927.com/auth/refresh</span>
 <span class="c-hdr">Content-Type:</span> application/json
 
 {
@@ -637,7 +642,7 @@
             </p>
 
             <div class="code-label">İstek Örneği</div>
-            <pre><span class="c-method">GET</span> <span class="c-url">{BASE_URL}/locations/cities</span>
+            <pre><span class="c-method">GET</span> <span class="c-url">https://t-uat.tatko1927.com/locations/cities</span>
 <span class="c-hdr">Authorization:</span> Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</pre>
 
             <div class="code-label">Başarılı Yanıt — 200 OK</div>
@@ -701,7 +706,7 @@
             </table>
 
             <div class="code-label">İstek Örneği — İstanbul ilçeleri</div>
-            <pre><span class="c-method">GET</span> <span class="c-url">{BASE_URL}/locations/districts?ilKodu=34</span>
+            <pre><span class="c-method">GET</span> <span class="c-url">https://t-uat.tatko1927.com/locations/districts?ilKodu=34</span>
 <span class="c-hdr">Authorization:</span> Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</pre>
 
             <div class="code-label">Başarılı Yanıt — 200 OK</div>
@@ -755,7 +760,7 @@
             </p>
 
             <div class="code-label">İstek Örneği</div>
-            <pre><span class="c-method">GET</span> <span class="c-url">{BASE_URL}/customeraddresses</span>
+            <pre><span class="c-method">GET</span> <span class="c-url">https://t-uat.tatko1927.com/customeraddresses</span>
 <span class="c-hdr">Authorization:</span> Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</pre>
 
             <div class="code-label">Başarılı Yanıt — 200 OK</div>
@@ -830,7 +835,7 @@
             </table>
 
             <div class="code-label">İstek Örneği</div>
-            <pre><span class="c-method">POST</span> <span class="c-url">{BASE_URL}/customeraddresses</span>
+            <pre><span class="c-method">POST</span> <span class="c-url">https://t-uat.tatko1927.com/customeraddresses</span>
 <span class="c-hdr">Authorization:</span> Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 <span class="c-hdr">Content-Type:</span> application/json
 
@@ -913,15 +918,15 @@
 
             <div class="code-label">İstek Örnekleri</div>
             <pre><span class="c-cmt">// Tüm stok</span>
-<span class="c-method">GET</span> <span class="c-url">{BASE_URL}/stock</span>
+<span class="c-method">GET</span> <span class="c-url">https://t-uat.tatko1927.com/stock</span>
 <span class="c-hdr">Authorization:</span> Bearer ...
 
 <span class="c-cmt">// Ebata göre filtrele</span>
-<span class="c-method">GET</span> <span class="c-url">{BASE_URL}/stock?ebat=2055516</span>
+<span class="c-method">GET</span> <span class="c-url">https://t-uat.tatko1927.com/stock?ebat=2055516</span>
 <span class="c-hdr">Authorization:</span> Bearer ...
 
 <span class="c-cmt">// Stok koduna göre filtrele</span>
-<span class="c-method">GET</span> <span class="c-url">{BASE_URL}/stock?stokKodu=BRI.001</span>
+<span class="c-method">GET</span> <span class="c-url">https://t-uat.tatko1927.com/stock?stokKodu=BRI.001</span>
 <span class="c-hdr">Authorization:</span> Bearer ...</pre>
 
             <div class="code-label">Başarılı Yanıt — 200 OK</div>
@@ -1092,7 +1097,7 @@
             </table>
 
             <div class="code-label">İstek Örneği — Tek Kalemli Sipariş</div>
-            <pre><span class="c-method">POST</span> <span class="c-url">{BASE_URL}/orders</span>
+            <pre><span class="c-method">POST</span> <span class="c-url">https://t-uat.tatko1927.com/orders</span>
 <span class="c-hdr">Authorization:</span> Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 <span class="c-hdr">Content-Type:</span> application/json
 
@@ -1114,7 +1119,7 @@
 }</pre>
 
             <div class="code-label">İstek Örneği — Çok Kalemli Sipariş</div>
-            <pre><span class="c-method">POST</span> <span class="c-url">{BASE_URL}/orders</span>
+            <pre><span class="c-method">POST</span> <span class="c-url">https://t-uat.tatko1927.com/orders</span>
 <span class="c-hdr">Authorization:</span> Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 <span class="c-hdr">Content-Type:</span> application/json
 
@@ -1182,4 +1187,3 @@
 
 </body>
 </html>
-
